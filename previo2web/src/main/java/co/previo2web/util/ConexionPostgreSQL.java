@@ -1,6 +1,8 @@
 package co.previo2web.util;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class ConexionPostgreSQL {
 	public Connection con;
@@ -17,7 +19,7 @@ public class ConexionPostgreSQL {
 	try {
 		Class.forName("org.postgresql.Driver");
 	} catch (ClassNotFoundException e) {
-		e.printStackTracer();
+		e.printStackTrace();
 	}
 	
 	try {
@@ -29,10 +31,17 @@ public class ConexionPostgreSQL {
 	
 	boolean valid = con.isValid(50000);
 	System.out.println(valid ? "TEST OK" : "TEST FAIL");
-	} catch(SQLException e)
+	
+	} catch (SQLException e)
 	{
-		e.printStackTracer();
+		e.printStackTrace();
 		
 	}
 }
+	
+	public static void main(String[] args)
+	{
+		ConexionPostgreSQL javaPostgreSQLBasic = new ConexionPostgreSQL();
+		
+	}
 }
