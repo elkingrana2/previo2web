@@ -21,6 +21,11 @@ public class Country implements Serializable {
 		this.id = id;
 		this.name = name;
 	}
+	
+	public Country(String name) {
+		//super();
+		this.name = name;
+	}
 
 
 

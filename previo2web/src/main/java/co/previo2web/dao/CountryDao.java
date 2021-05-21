@@ -2,13 +2,14 @@ package co.previo2web.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import co.previo2web.dto.Country;
 import co.previo2web.util.ConexionPostgreSQL;
 
-public class CountryDao {
+public class CountryDao  {
 	private ConexionPostgreSQL conexion;
 	
 	private static final String INSERT_country_SQL ="INSERT INTO country (name) VALUES (?)";
@@ -22,7 +23,7 @@ public class CountryDao {
 		this.conexion = ConexionPostgreSQL.getConexion();
 	}
 	
-	public void insert(Country country)
+	public void insert(Country country) throws SQLException
 	{
 		try {
 			PreparedStatement preparedStatement = conexion.setprePreparedStatement(INSERT_country_SQL);
@@ -33,7 +34,7 @@ public class CountryDao {
 		}
 	}
 	
-	public void delete(String id)
+	public void delete(String id) throws SQLException
 	{
 		try {
 			PreparedStatement preparedStatement = conexion.setprePreparedStatement(DELETE_country_SQL);
@@ -45,7 +46,7 @@ public class CountryDao {
 		
 	}
 	
-	public void update(Country country)
+	public void update(Country country) throws SQLException
 	{
 		try {
 			PreparedStatement preparedStatement = conexion.setprePreparedStatement(UPDATE_country_SQL);
